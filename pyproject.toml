@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "gcp-experiments"
+version = "0.1.0"
+description = ""
+authors = ["David Torres <github.com/datorresb>"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "~3.10"
+wheel = "^0.43.0"
+uvicorn = {extras = ["standard"], version = "^0.28.0"}
+fastapi = "~0.110.0"
+pydantic = "~2.6.4"
+pandas = "^2.2.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.1.1"
+notebook = "^7.1.1"
+nbstripout = "^0.7.1"
+ipywidgets = "^8.1.2"
+ipython = "^8.22.2"
+isort = "^5.13.2"
+flake8 = "^7.0.0"
+black = {extras = ["jupyter"], version = "^24.2.0"}
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

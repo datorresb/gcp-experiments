@@ -1,0 +1,62 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/python
+{
+	"name": "Dev Container for GCP experiments",
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	"build": {
+		"dockerfile": "Dockerfile",
+		"context": "..",
+		"args": {
+			"POETRY_VERSION": "1.8"
+		}
+	},
+	"runArgs": [
+		"--env-file",
+		"${localWorkspaceFolder}/.env",
+		"--gpus",
+		"all"
+	],
+	"hostRequirements": {
+		"gpu": "optional"
+	},
+	"features": {
+		//"ghcr.io/dhoeric/features/google-cloud-cli:1": {},
+		"ghcr.io/devcontainers/features/git:1": {},
+		"ghcr.io/devcontainers/features/nvidia-cuda:1": {},
+		"ghcr.io/devcontainers-contrib/features/poetry:2": {}
+	},
+	// Configure the container's remote environment variables
+	"remoteEnv": {},
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			// Set *default* container specific settings.json values on container create.
+			"settings": {
+				"python.defaultInterpreterPath": "/usr/local/bin/python",
+				"python.languageServer": "Pylance",
+				"editor.formatOnSave": true,
+				"python.testing.pytestArgs": [
+					"tests"
+				],
+				"python.testing.unittestEnabled": false,
+				"python.testing.nosetestsEnabled": false,
+				"python.testing.pytestEnabled": true,
+				"pythonTestExplorer.testFramework": "pytest"
+			},
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+				"ms-python.python",
+				"ms-python.vscode-pylance",
+				"DavidAnson.vscode-markdownlint",
+				"eamodio.gitlens"
+			]
+		}
+	},
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"onCreateCommand": "",
+	"postCreateCommand": "bash .devcontainer/postCreate.sh"
+	//"mounts": [
+	//	// Re-use local Git configuration
+	//	"source=${localEnv:HOME}/.gitconfig,target=/home/vscode/.gitconfig,type=bind,consistency=cached"
+	//  ]
+}
