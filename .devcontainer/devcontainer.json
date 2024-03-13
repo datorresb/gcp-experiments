@@ -6,9 +6,7 @@
 	"build": {
 		"dockerfile": "Dockerfile",
 		"context": "..",
-		"args": {
-			"POETRY_VERSION": "1.8"
-		}
+		"args": {}
 	},
 	"runArgs": [
 		"--env-file",
@@ -21,9 +19,9 @@
 	},
 	"features": {
 		//"ghcr.io/dhoeric/features/google-cloud-cli:1": {},
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {},
 		"ghcr.io/devcontainers/features/git:1": {},
-		"ghcr.io/devcontainers/features/nvidia-cuda:1": {},
-		"ghcr.io/devcontainers-contrib/features/poetry:2": {}
+		"ghcr.io/devcontainers/features/nvidia-cuda:1": {}
 	},
 	// Configure the container's remote environment variables
 	"remoteEnv": {},
@@ -45,10 +43,17 @@
 			},
 			// Add the IDs of extensions you want installed when the container is created.
 			"extensions": [
-				"ms-python.python",
-				"ms-python.vscode-pylance",
+				// Git extensions
+				"eamodio.gitlens",
+				// Markdown extensions
 				"DavidAnson.vscode-markdownlint",
-				"eamodio.gitlens"
+				// Docker extensions
+				"ms-azuretools.vscode-docker",
+				// GCP extensions
+				//"googlecloudtools.cloudcode",
+				// Python extensions
+				"ms-python.python",
+				"ms-python.vscode-pylance"
 			]
 		}
 	},

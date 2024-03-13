@@ -1,0 +1,18 @@
+# ignore python artifacts
+.mypy_cache/
+.pytest_cache/
+__pycache__/
+**/*.pyc
+
+__pycache__/
+.devcontainer/
+.vscode/
+.git/
+.gitignore
+.env
+.dockerignore
+Dockerfile
+README.md
+
+notebooks/
+tests/

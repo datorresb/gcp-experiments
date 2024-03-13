@@ -1,0 +1,22 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+uvicorn = {version = ">=0.28", extras = ["standard"]}
+fastapi = ">=0.110"
+pydantic = ">=2.6.4"
+
+[dev-packages]
+pytest = "*"
+notebook = "*"
+nbstripout = "*"
+ipywidgets = "*"
+ipython = "*"
+black = {version = "*", extras = ["jupyter"]} 
+isort = "*"
+flake8 = "*"
+
+[requires]
+python_version = "3.10"

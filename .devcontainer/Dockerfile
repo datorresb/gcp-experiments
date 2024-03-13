@@ -4,9 +4,5 @@
 ARG VARIANT="3.10-bullseye"
 FROM mcr.microsoft.com/vscode/devcontainers/python:1-${VARIANT}
 
-# WORKDIR /app
 RUN sudo apt-get update -y && sudo apt-get upgrade -y
 RUN python -m pip install --upgrade pip
-
-ARG POETRY_VERSION="none"
-RUN if [ "${POETRY_VERSION}" != "none" ]; then su vscode -c "umask 0002 && pip3 install poetry==${POETRY_VERSION}"; fi
