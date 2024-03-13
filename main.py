@@ -18,9 +18,11 @@ from pydantic import BaseModel
 # This function helps generate the API schema, which describes the structure and functionalities of your API.
 app = FastAPI()
 
+MODEL_SERVE = os.environ.get("MODEL_SERVE")
+
 @app.get("/")
 async def root():
-    return {"message": "Ok"}
+    return {"message": f"Ok {MODEL_SERVE}"}
 
 # Schema for API Gateway
 class RequestItem(BaseModel):
@@ -52,10 +54,18 @@ def health_check():
 
 
 def custom_openapi():
+    """
+    A function that generates the OpenAPI schema for the FastAPI application.
+    If the app already has an OpenAPI schema, it returns that.
+    Otherwise, it creates a new schema, adds some custom Google Cloud Run backend configuration,
+    sets a specific path option, updates the app's OpenAPI schema, and returns it.
+
+    https://fastapi.tiangolo.com/how-to/extending-openapi/
+    """
     if app.openapi_schema:
         return app.openapi_schema
 
-    openapi_schema = get_openapi(title="FastAPI", version="0.1.0", routes=app.routes)
+    openapi_schema = get_openapi(title="Custom FastAPI", version="0.1.0", routes=app.routes)
 
     openapi_schema["x-google-backend"] = {
         "address": "${CLOUD_RUN_URL}",

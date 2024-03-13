@@ -6,3 +6,5 @@ FROM mcr.microsoft.com/vscode/devcontainers/python:1-${VARIANT}
 
 RUN sudo apt-get update -y && sudo apt-get upgrade -y
 RUN python -m pip install --upgrade pip
+
+RUN echo -e ".devconainer ready\n"
