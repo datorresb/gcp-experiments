@@ -51,34 +51,3 @@ def model_serve(input: RequestItem):
 @app.get("/api/health", status_code=200)
 def health_check():
     return {"api_healthy": True}
-
-
-def custom_openapi():
-    """
-    A function that generates the OpenAPI schema for the FastAPI application.
-    If the app already has an OpenAPI schema, it returns that.
-    Otherwise, it creates a new schema, adds some custom Google Cloud Run backend configuration,
-    sets a specific path option, updates the app's OpenAPI schema, and returns it.
-
-    https://fastapi.tiangolo.com/how-to/extending-openapi/
-    """
-    if app.openapi_schema:
-        return app.openapi_schema
-
-    openapi_schema = get_openapi(title="Custom FastAPI", version="0.1.0", routes=app.routes)
-
-    openapi_schema["x-google-backend"] = {
-        "address": "${CLOUD_RUN_URL}",
-        "deadline": "${TIMEOUT}",
-    }
-
-    openapi_schema["paths"]["/predictions"]["options"] = {
-        "operationId": "corsHelloWorld",
-        "responses": {"200": {"description": "Successful response"}},
-    }
-
-    app.openapi_schema = openapi_schema
-    return app.openapi_schema
-
-
-app.openapi = custom_openapi
