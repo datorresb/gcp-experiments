@@ -5,6 +5,8 @@ ARG VARIANT="3.10-bullseye"
 FROM mcr.microsoft.com/vscode/devcontainers/python:1-${VARIANT}
 
 RUN sudo apt-get update -y && sudo apt-get upgrade -y
+RUN sudo apt-get install -y apt-transport-https ca-certificates gnupg curl
+
 RUN python -m pip install --upgrade pip
 
 RUN echo -e ".devconainer ready\n"
