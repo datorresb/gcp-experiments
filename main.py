@@ -34,8 +34,6 @@ class ResponseItem(BaseModel):
 def gen_model(text: str):
     return f"gen: {text}"
 
-
-
 @app.post("/predictions", response_model=ResponseItem)
 def model_serve(input: RequestItem):
     """

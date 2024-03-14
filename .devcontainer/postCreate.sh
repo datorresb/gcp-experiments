@@ -7,3 +7,5 @@ fi
 
 # Install dependencies
 pipenv sync --dev
+
+# export PYTHONPATH=/workspaces/gcp-experiments:$PYTHONPATH
