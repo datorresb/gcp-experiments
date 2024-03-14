@@ -10,9 +10,11 @@ __pycache__/
 .git/
 .gitignore
 .env
+.env.*
 .dockerignore
 Dockerfile
 README.md
+docker-compose.*
 
 notebooks/
 tests/

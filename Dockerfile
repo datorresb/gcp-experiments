@@ -2,7 +2,7 @@ FROM tiangolo/uvicorn-gunicorn-fastapi:python3.10
 
 ENV PYTHONUNBUFFERED True
 
-ENV APP_HOME /app
+ENV APP_HOME /app/
 WORKDIR $APP_HOME
 
 COPY Pipfile.lock* Pipfile $APP_HOME

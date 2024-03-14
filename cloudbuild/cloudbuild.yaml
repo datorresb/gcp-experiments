@@ -1,0 +1,7 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'us-central1-docker.pkg.dev/central-phalanx-417014/gcp-experiments/fastapi-test:0.1', '.' ]
+  env:
+   - 'MODEL_SERVE=PROD'
+images: 
+- 'us-central1-docker.pkg.dev/central-phalanx-417014/gcp-experiments/fastapi-test:0.1'

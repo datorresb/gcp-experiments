@@ -16,3 +16,4 @@ Ex.
     docker compose up
     docker compose -f docker-compose.dev.yaml up --build
     ```
+    # image: "REGION-docker.pkg.dev/PROJECT_ID/ARTIFACT_REPOSITORY/IMAGE_NAME:TAG"

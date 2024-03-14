@@ -18,7 +18,7 @@ from pydantic import BaseModel
 # This function helps generate the API schema, which describes the structure and functionalities of your API.
 app = FastAPI()
 
-MODEL_SERVE = os.environ.get("MODEL_SERVE")
+MODEL_SERVE = os.environ.get("MODEL_SERVE", "None")
 
 @app.get("/")
 async def root():
